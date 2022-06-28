@@ -41,5 +41,65 @@ int main()
 
     //Useful formatters:
 
+    /*
+    Group	Flag	Meaning
+	std::ios::boolalpha	If set, booleans print “true” or “false”. If not set, booleans print 0 or 1
+
+    Manipulator	Meaning
+    std::boolalpha	Booleans print “true” or “false”
+    std::noboolalpha	Booleans print 0 or 1 (default)
+    */
+    std::cout << true << ' ' << false << '\n'; // print 1 0
+
+    std::cout.setf(std::ios::boolalpha);
+    std::cout << true << ' ' << false << '\n'; // print true false
+
+    std::cout << std::noboolalpha << true << ' ' << false << '\n'; // print 1 0
+    std::cout << std::boolalpha << true << ' ' << false << '\n'; // print true false
+
+    /*
+    std::ios::showpos	If set, prefix positive numbers with a +
+    std::showpos	Prefixes positive numbers with a +
+    std::noshowpos	Doesn’t prefix positive numbers with a +
+    */
+    std::cout << 5 << '\n'; // print 5
+
+    std::cout.setf(std::ios::showpos);
+    std::cout << 5 << '\n'; // print +5
+
+    std::cout << std::noshowpos << 5 << '\n'; //print 5
+    std::cout << std::showpos << 5 << '\n'; // print +5
+    std::cout << std::noshowpos << 5 << '\n'; //print 5
+
+    /*
+    std::ios::uppercase	If set, uses upper case letters
+    std::uppercase	Uses upper case letters
+    std::nouppercase	Uses lower case letters
+    */
+    std::cout << 12345678.9 << '\n'; // print +1.23457E+07
+    
+    std::cout.setf(std::ios::uppercase);
+    std::cout << 12345678.9 << '\n'; // print +1.23457E+07
+
+    std::cout << std::nouppercase << 12345678.9 << '\n'; //print +1.23457e+07
+    std::cout << std::uppercase << 12345678.9 << '\n'; //print +1.23457E+07
+
+    /*
+    std::ios::basefield	std::ios::dec	Prints values in decimal (default)
+    std::ios::basefield	std::ios::hex	Prints values in hexadecimal
+    std::ios::basefield	std::ios::oct	Prints values in octal
+    std::ios::basefield	(none)	Prints values according to leading characters of value
+
+    std::dec	Prints values in decimal
+    std::hex	Prints values in hexadecimal
+    std::oct	Prints values in octal
+    */
+
+    std::cout << 27 << '\n'; // print 27
+
+    std::cout.setf(std::ios::dec, std::ios::basefield);
+    std::cout << 27 << '\n';
+
+
     return 0;
 }
