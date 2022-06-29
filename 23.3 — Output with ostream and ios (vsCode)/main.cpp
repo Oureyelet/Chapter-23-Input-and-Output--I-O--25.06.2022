@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip> // for std::setprecision
+#include <ios> // for std::showpoint
 
 int main()
 {
@@ -98,8 +100,92 @@ int main()
     std::cout << 27 << '\n'; // print 27
 
     std::cout.setf(std::ios::dec, std::ios::basefield);
-    std::cout << 27 << '\n';
+    std::cout << 27 << '\n'; // print 27
 
+    std::cout.setf(std::ios::oct, std::ios::basefield);
+    std::cout << 27 << '\n'; // print 33
+
+    std::cout.setf(std::ios::hex, std::ios::basefield);
+    std::cout << 27 << '\n'; // print 1B
+
+    std::cout << std::dec << 27 << '\n'; //print 27
+    std::cout << std::oct << 27 << '\n'; //print 33
+    std::cout << std::hex << 27 << '\n'; //print 1B
+
+
+    //Precision, notation, and decimal points:
+
+    /*
+    std::ios::floatfield	std::ios::fixed	        Uses decimal notation for floating-point numbers
+    std::ios::floatfield	std::ios::scientific	Uses scientific notation for floating-point numbers
+    std::ios::floatfield	(none)	                Uses fixed for numbers with few digits, scientific otherwise
+    std::ios::floatfield	std::ios::showpoint	    Always show a decimal point and trailing 0’s for floating-point values
+
+    std::fixed	            Use decimal notation for values
+    std::scientific	        Use scientific notation for values
+    std::showpoint	        Show a decimal point and trailing 0’s for floating-point values
+    std::noshowpoint	    Don’t show a decimal point and trailing 0’s for floating-point values
+    std::setprecision(int)	Sets the precision of floating-point numbers (defined in the iomanip header)
+    
+    std::precision()	    Returns the current precision of floating-point numbers
+    std::precision(int)	    Sets the precision of floating-point numbers and returns old precision
+    */
+    std::cout << std::fixed << '\n';
+    std::cout << std::setprecision(3) << 123.456 << '\n'; // print 123.456
+    std::cout << std::setprecision(4) << 123.456 << '\n'; // print 123.4560
+    std::cout << std::setprecision(5) << 123.456 << '\n'; // print 123.45600
+    std::cout << std::setprecision(6) << 123.456 << '\n'; // print 123.456000
+    std::cout << std::setprecision(7) << 123.456 << '\n'; // print 123.4560000
+
+    std::cout << std::scientific << '\n';
+    std::cout << std::setprecision(3) << 123.456 << '\n'; // print 1.235E+02
+    std::cout << std::setprecision(4) << 123.456 << '\n'; // print 1.2346E+02
+    std::cout << std::setprecision(5) << 123.456 << '\n'; // print 1.23456E+02
+    std::cout << std::setprecision(6) << 123.456 << '\n'; // print 1.234560E+02
+    std::cout << std::setprecision(7) << 123.456 << '\n'; // print 1.2345600E+02
+
+    //Using the showpoint manipulator or flag, you can make the stream write a decimal point and trailing zeros:
+    std::cout << std::showpoint << '\n';
+    std::cout << std::setprecision(3) << 123.456 << '\n'; // print 123.
+    std::cout << std::setprecision(4) << 123.456 << '\n'; // print 123.4
+    std::cout << std::setprecision(5) << 123.456 << '\n'; // print 123.45
+    std::cout << std::setprecision(6) << 123.456 << '\n'; // print 123.456
+    std::cout << std::setprecision(7) << 123.456 << '\n'; // print 123.4560
+
+    
+    //Width, fill characters, and justification:
+
+    /*
+    std::ios::adjustfield	std::ios::internal	Left-justifies the sign of the number, and right-justifies the value
+    std::ios::adjustfield	std::ios::left	    Left-justifies the sign and value
+    std::ios::adjustfield	std::ios::right	    Right-justifies the sign and value (default)
+    
+    std::internal	    Left-justifies the sign of the number, and right-justifies the value
+    std::left	        Left-justifies the sign and value
+    std::right	        Right-justifies the sign and value
+    std::setfill(char)	Sets the parameter as the fill character (defined in the iomanip header)
+    std::setw(int)	    Sets the field width for input and output to the parameter (defined in the iomanip header)
+    
+    std::fill()	        Returns the current fill character
+    std::fill(char)	    Sets the fill character and returns the old fill character
+    std::width()	    Returns the current field width
+    std::width(int)	    Sets the current field width and returns old field width
+    */
+    std::cout << std::dec << '\n';
+    std::cout << 22 << '\n';
+
+    std::cout << -12345 << '\n'; // print default value with no field width
+    std::cout << std::setw(10) << -12345 << '\n';   // print default with field width
+    std::cout << std::setw(10) << std::left << -12345 << '\n'; // print left justified
+    std::cout << std::setw(10) << std::right << -12345 << '\n'; // print right justified  
+    std::cout << std::setw(10) << std::internal << -12345 << '\n'; // print internal justified
+
+    //Now, let’s set a fill character and do the same example:
+    std::cout.fill('*');
+    std::cout << std::setw(10) << -12345 << '\n';   // print default with field width
+    std::cout << std::setw(10) << std::left << -12345 << '\n'; // print left justified
+    std::cout << std::setw(100) << std::right << -12345 << '\n'; // print right justified  
+    std::cout << std::setw(10) << std::internal << -12345 << '\n'; // print internal justified
 
     return 0;
 }
