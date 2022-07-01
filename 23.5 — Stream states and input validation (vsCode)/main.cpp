@@ -4,6 +4,7 @@
 #include <string>
 #include <string_view>
 #include <map>
+#include <limits>
 
 bool isValidName(std::string_view name)
 {
@@ -45,7 +46,7 @@ bool inputMatches(std::string_view input, std::string_view pattern)
 }
 
 int main()
-{
+{/*
     //Stream states:
 
     //Input validation:
@@ -74,5 +75,39 @@ int main()
     }   while(!inputMatches(phoneNumber, "(###) ###-####"));
 
     std::cout << "You entered: " << phoneNumber << '\n';
+
+*/
+    //Numeric validation:
+
+    int age{};
+
+    while(true)
+    {
+        std::cout << "Enter your age: ";
+        std::cin >> age;
+
+        if(std::cin.fail())// no extraction took place
+        {
+            std::cin.clear();// reset the state bits back to goodbit so we can use ignore()
+
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');// clear out the bad input from the stream
+            continue;// try again
+        }
+
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');// clear out any additional input from the stream
+
+        if(std::cin.gcount() > 1)// if we cleared out more than one additional character
+        {
+            continue; // we'll consider this input to be invalid
+        }
+
+        if(age <= 0)// make sure age is positive
+            continue;
+        
+        break;
+    }
+    
+    std::cout << "You are " << age << " years old\n";
+
     return 0;
 }
