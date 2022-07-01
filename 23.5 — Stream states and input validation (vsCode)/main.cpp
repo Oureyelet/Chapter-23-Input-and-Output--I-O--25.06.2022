@@ -5,6 +5,8 @@
 #include <string_view>
 #include <map>
 #include <limits>
+#include <optional>
+#include <charconv> // std::from_chars
 
 bool isValidName(std::string_view name)
 {
@@ -108,6 +110,11 @@ int main()
     }
     
     std::cout << "You are " << age << " years old\n";
+
+
+    //Numeric validation as a string:
+    //https://www.learncpp.com/cpp-tutorial/stream-states-and-input-validation/
+
 
     return 0;
 }
