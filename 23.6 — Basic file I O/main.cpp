@@ -5,23 +5,30 @@
 int main()
 {/*
     //File output:
-
-    std::ofstream outf{ "Sample.txt" };// ofstream is used for writing files. We'll make a file called Sample.txt
-
-    if(!outf)// If we couldn't open the output file stream for writing
-    {
-        // Print an error and exit
-        std::cerr << "Uh oh, Sample.txt could not be opened for writing!\n";
-        return 1;
-    }
-
-    // We'll write two lines into this file
-    outf << "This is line 1" << '\n';
-    outf << "This is line 2" << '\n';
-*/
+    //go see our "File output.cpp" file
 
     //File input:
+    //go see our "File input.cpp" file
 
+    //Buffered output:
+
+    //File modes:
+
+    
+    Ios file mode	    Meaning
+    app	                Opens the file in append mode
+    ate	                Seeks to the end of the file before reading/writing
+    binary	            Opens the file in binary mode (instead of text mode)
+    in	                Opens the file in read mode (default for ifstream)
+    out	                Opens the file in write mode (default for ofstream)
+    trunc	            Erases the file if it already exists
+    
+
+    //Let’s write a program that appends two more lines to the Sample.txt file we previously created:
+    //go see our "Appends to file(FIle input).cpp" file
+
+
+    //Using one of the previously sample programs that prints its contents:
     std::ifstream inf{ "Sample.txt" }; // ifstream is used for reading files. We'll read from a file called Sample.txt
 
     if(!inf)// If we couldn't open the output file stream for reading
@@ -37,14 +44,8 @@ int main()
         std::getline(inf, strInput);
         std::cout << strInput << '\n';
     }
-
-
-    //Buffered output:
-
-    //File modes:
-
-    
-
+*/
+std::cout << "yo" << '\n';
     return 0;
 
     // When outf goes out of scope, the ofstream
