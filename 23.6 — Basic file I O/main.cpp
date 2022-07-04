@@ -45,7 +45,13 @@ int main()
         std::cout << strInput << '\n';
     }
 */
-std::cout << "yo" << '\n';
+
+    /*
+    std::ifstream defaults to std::ios::in file mode. 
+    std::ofstream defaults to std::ios::out file mode. 
+    std::fstream defaults to std::ios::in | std::ios::out file mode, meaning you can both read and write by default.
+    */
+
     return 0;
 
     // When outf goes out of scope, the ofstream
