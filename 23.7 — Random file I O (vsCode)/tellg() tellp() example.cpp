@@ -4,8 +4,11 @@
 
 int main()
 {
-    //Two other useful functions are tellg() and tellp(), which return the absolute position of the file pointer. 
-    //This can be used to determine the size of a file:
+    /*
+    Two other useful functions are tellg() and tellp(), 
+    which return the absolute position of the file pointer. 
+    This can be used to determine the size of a file:
+    */
 
     std::ifstream inf{ "Sample.txt" };
 

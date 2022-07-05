@@ -38,7 +38,20 @@ int main()
 
 
     //Reading and writing a file at the same time using fstream:
-        
+    //see our std::fstream example.cpp file
+
+
+    //Other useful file functions:
+
+    std::cout << std::boolalpha << '\n'; // print true of false instead of 1 and 0
+    std::cout << inf.is_open() << '\n'; // print true if file is still open
+
+    inf.close(); // close inf file
+
+    std::cout << inf.is_open() << '\n'; // print true if file is still open
+
+
+    //A warning about writing pointers to disk:
 
     return 0;
 }
